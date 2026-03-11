@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>🎁 CS2 Kasa Açma Demo</title>
+    <style>
+        body {
+            background: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 30px;
+        }
+        .cases button {
+            padding: 10px 20px;
+            margin: 10px;
+            background: #444;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .roll-area {
+            margin-top: 30px;
+            padding: 20px;
+            border: 2px solid yellow;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            overflow-x: auto;
+            white-space: nowrap;
+            border-radius: 10px;
+        }
+        .item {
+            display: inline-block;
+            margin: 0 15px;
+            text-align: center;
+        }
+        .item img {
+            width: 120px;
+            height: auto;
+            border-radius: 5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🎁 CS2 Kasa Açma Demo</h1>
+
+<div class="cases">
+    <button onclick="openCase()">AK-47 Kasası Aç</button>
+</div>
+
+<div class="roll-area" id="rollArea"></div>
+
+<script>
+    // Kasa içi skinler (şu an sadece vulcan.png var)
+    const akCase = [
+        { name: "AK-47 Vulcan", img: "/vulcan.png", chance: 5 },
+        { name: "AK-47 Elite Build", img: "/vulcan.png", chance: 20 },
+        { name: "AK-47 Safari Mesh", img: "/vulcan.png", chance: 75 }
+    ];
+
+    function openCase() {
+        const rollArea = document.getElementById("rollArea");
+        rollArea.innerHTML = "";
+
+        // 20 skin gösterecek
+        for (let i = 0; i < 20; i++) {
+            const item = akCase[Math.floor(Math.random() * akCase.length)];
+
+            rollArea.innerHTML += `
+                <div class="item">
+                    <img src="${item.img}" alt="${item.name}">
+                    <div>${item.name}</div>
+                </div>
+            `;
+        }
+    }
+</script>
+
+</body>
+</html>
